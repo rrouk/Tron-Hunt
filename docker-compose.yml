@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  tron-checker:
+    # Имя сервиса, которое будет использоваться Docker Compose
+    container_name: tron_key_checker
+    
+    # Собрать образ, используя Dockerfile в текущей директории
+    build: .
+    
+    # Перезапускать контейнер, если он неожиданно остановится
+    restart: unless-stopped
+    
+    # Подключить локальную папку 'results' к папке /app в контейнере.
+    # Это гарантирует, что файл FileTRXWinner.txt, созданный скриптом,
+    # сохранится на вашем хосте, даже если контейнер будет удален.
+    volumes:
+      - ./results:/app/results
+    
+    # Поскольку скрипт использует внешнюю сеть (API Tronscan),
+    # используем режим host для простоты сетевых настроек.
+    network_mode: host
+    
+    # Переопределение команды для запуска. 
+    # Если вы хотите, чтобы скрипт записывал результаты в папку results/
+    # (как указано в volumes), вам нужно изменить строку записи в скрипте 
+    # с "FileTRXWinner.txt" на "results/FileTRXWinner.txt".
+    command: python bot.py

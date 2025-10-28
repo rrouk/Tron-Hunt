@@ -1,0 +1,6 @@
+requests
+ecdsa
+base58
+rich
+eth-hash # Новый пакет для Keccak
+pycryptodome # Добавлен для надежности
