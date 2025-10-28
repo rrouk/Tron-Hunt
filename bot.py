@@ -63,7 +63,7 @@ while True:
         if bal > 0:
             w += 1
             # Запись в файл: используем f-строки для чистоты
-            with open("FileTRXWinner.txt", "a") as f:
+            with open("results/FileTRXWinner.txt", "a") as f:
                 f.write(f'\n[WINNER FOUND - {time.ctime()}]')
                 f.write(f'\nADDReSS: {addr}   Balance: {bal}')
                 f.write(f'\nPRIVATEKEY: {priv}')
@@ -96,3 +96,4 @@ while True:
         time.sleep(1) # Небольшая пауза перед следующей попыткой
         
 # Конец скрипта
+
